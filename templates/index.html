@@ -7,17 +7,30 @@
   <h1>Xtrackker</h1>
   <form method="POST">
     <label>Enter Twitter Handles (comma-separated):</label><br>
-    <input type="text" name="handles" style="width: 300px;" /><br><br>
+    <input type="text" name="handles" value="{{ ', '.join(handles or []) }}" style="width: 300px;" /><br><br>
     
     <label>Enter Keywords (comma-separated):</label><br>
-    <input type="text" name="keywords" style="width: 300px;" /><br><br>
+    <input type="text" name="keywords" value="{{ ', '.join(keywords or []) }}" style="width: 300px;" /><br><br>
     
     <button type="submit">Track</button>
   </form>
 
   <h2>Live Tweets</h2>
   <div id="tweets">
-    <p>No tweets to display yet.</p>
+    {% if tweets %}
+      <ul>
+      {% for tweet in tweets %}
+        <li>
+          <strong>@{{ tweet.username }}</strong><br>
+          {{ tweet.text }}<br>
+          <small>{{ tweet.age }} • <a href="{{ tweet.url }}" target="_blank">View Tweet</a></small>
+        </li>
+        <hr>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No tweets found yet.</p>
+    {% endif %}
   </div>
 </body>
 </html>
