@@ -1,11 +1,23 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Xtrackker</title>
 </head>
 <body>
-  <h1>Xtrackker is running!</h1>
-  <p>You should now see tweets here soon.</p>
+  <h1>Xtrackker</h1>
+  <form method="POST">
+    <label>Enter Twitter Handles (comma-separated):</label><br>
+    <input type="text" name="handles" style="width: 300px;" /><br><br>
+    
+    <label>Enter Keywords (comma-separated):</label><br>
+    <input type="text" name="keywords" style="width: 300px;" /><br><br>
+    
+    <button type="submit">Track</button>
+  </form>
+
+  <h2>Live Tweets</h2>
+  <div id="tweets">
+    <p>No tweets to display yet.</p>
+  </div>
 </body>
 </html>
